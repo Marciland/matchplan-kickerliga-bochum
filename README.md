@@ -10,6 +10,12 @@ While implementing the desired features i was troubled with creating <br> a matc
 
 What helped me solve the problem: [the algorithm](https://docplayer.org/24818670-36-algorithmus-der-woche-turnier-und-sportligaplanung.html) (german)
 
+## Important notice:
+
+The referenced algorithm says that only even number of teams can be used. <br>
+I allowed odd numbers of teams in my script by adding a dummy team if the amount of teams is odd! <br>
+This means the team that should play against the dummy team skips the matchday.
+
 ## How to run the script:
 Download this repository either by clicking <> Code and selecting Download ZIP <br>
 or clone the repository with git.
