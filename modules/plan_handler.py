@@ -11,37 +11,37 @@ def create_empty_plan(amount_of_teams: int):
 
 def create_first_half(plan: dict, teams: list):
     matchdays = len(teams) - 1
-    for i in range(1, len(teams)):
+    for matchday in range(1, len(teams)):
         home = len(teams)
-        away = i
+        away = matchday
 
-        if i % 2 != 0:
+        if matchday % 2 != 0:
             temp = away
             away = home
             home = temp
 
-        plan[i][0]['Spielort'] = teams[home-1]['Spielort']
-        plan[i][0]['Gastgeber'] = teams[home-1]['Name']
-        plan[i][0]['Gast'] = teams[away-1]['Name']
+        plan[matchday][0]['Spielort'] = teams[home-1]['Spielort']
+        plan[matchday][0]['Gastgeber'] = teams[home-1]['Name']
+        plan[matchday][0]['Gast'] = teams[away-1]['Name']
 
-        for j in range(1, int(len(teams) / 2)):
-            if i - j < 0:
-                away = matchdays + (i - j)
+        for match in range(1, int(len(teams) / 2)):
+            if matchday - match < 0:
+                away = matchdays + (matchday - match)
             else:
-                away = (i - j) % matchdays
+                away = (matchday - match) % matchdays
                 away = matchdays if away == 0 else away
 
-            home = (i + j) % matchdays
+            home = (matchday + match) % matchdays
             home = matchdays if home == 0 else home
 
-            if j % 2 == 0:
+            if match % 2 == 0:
                 temp = away
                 away = home
                 home = temp
 
-            plan[i][j]['Spielort'] = teams[home-1]['Spielort']
-            plan[i][j]['Gastgeber'] = teams[home-1]['Name']
-            plan[i][j]['Gast'] = teams[away-1]['Name']
+            plan[matchday][match]['Spielort'] = teams[home-1]['Spielort']
+            plan[matchday][match]['Gastgeber'] = teams[home-1]['Name']
+            plan[matchday][match]['Gast'] = teams[away-1]['Name']
     return plan
 
 

@@ -34,14 +34,16 @@ def create_single_league(league: int):
 if __name__ == '__main__':
     while True:
         mode = input('Do you wish to create multiple leagues' +
-                     ' (m) or just a specific one (s) \n')
+                     ' (m) or just a specific one (s) \n' +
+                     '>>> ')
         if mode != 'm' and mode != 's':
             print('Bad input')
             continue
         break
     if mode == 'm':
         while True:
-            amount_of_leagues = input('Amount of leagues: \n')
+            amount_of_leagues = input('Amount of leagues: \n' +
+                                      '>>> ')
             try:
                 amount_of_leagues = int(amount_of_leagues)
             except:
@@ -58,7 +60,8 @@ if __name__ == '__main__':
     elif mode == 's':
         while True:
             league = input(
-                'Which league should be created? Provide a whole number: \n')
+                'Which league should be created? Provide a whole number: \n' +
+                '>>> ')
             try:
                 league = int(league)
             except:
