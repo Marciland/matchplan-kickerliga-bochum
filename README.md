@@ -17,12 +17,12 @@ or clone the repository with git.
 If you decide to download the zip archive you need to extract the files before using the script.
 
 Either install [python](https://www.python.org/downloads/) (tested in 3.11.4) and manually run the following command: <br>
-- python path/to/create_plan.py
+- python [path/to/create_plan.py](create_plan.py)
 
-or run the create_plan.exe <br>
+or run the [create_plan.exe](create_plan.exe) <br>
 _(since this is self-contained, there will be a tmp folder created at runtime. This should delete itself. If it stays, you can safely remove it after the script exited.)_
 
-Before you can run the script properly you should modify the matchday_dates.json and teams.json accordingly.
+Before you can run the script properly you should modify the [matchday_dates.json](matchday_dates.json) and [teams.json](teams.json) accordingly.
 
 - fill teams with Name and Spielort (location)
 - fill matchday_dates with timestamps DD/MM/YYYY
