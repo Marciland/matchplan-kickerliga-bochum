@@ -1,31 +1,32 @@
-import modules.file_handling as file
-import modules.formatter as formatter
+from file_handling import read_json_file, create_csv
 
 
 def create_multiple_leagues(amount_of_leagues: int):
-    teams = file.read_json_file('teams.json')
-    matchday_dates = file.read_json_file('matchday_dates.json')
+    teams = read_json_file('teams.json')
+    matchday_dates = read_json_file('matchday_dates.json')
     for league in range(1, int(amount_of_leagues) + 1):
         league_name = str(league) + '.Liga'
         try:
-            csv = formatter.create_csv_format(teams[league_name],
-                                              matchday_dates[league_name],
-                                              league_name)
-            file.write_file(league_name, csv)
+            with open(league_name + '.csv', 'w', newline='',  encoding='utf-8') as file:
+                create_csv(file, teams[league_name],
+                           matchday_dates[league_name],
+                           league_name)
+            print(f'Successfully created {league_name}.csv')
         except Exception as ex:
             print(f'Failed to create: {ex}')
             raise ex
 
 
 def create_single_league(league: int):
-    teams = file.read_json_file('teams.json')
-    matchday_dates = file.read_json_file('matchday_dates.json')
+    teams = read_json_file('teams.json')
+    matchday_dates = read_json_file('matchday_dates.json')
     league_name = str(league) + '.Liga'
     try:
-        csv = formatter.create_csv_format(teams[league_name],
-                                          matchday_dates[league_name],
-                                          league_name)
-        file.write_file(league_name, csv)
+        with open(league_name + '.csv', 'w', newline='',  encoding='utf-8') as file:
+            create_csv(file, teams[league_name],
+                       matchday_dates[league_name],
+                       league_name)
+        print(f'Successfully created {league_name}.csv')
     except Exception as ex:
         print(f'Failed to create: {ex}')
         raise ex
@@ -47,7 +48,7 @@ if __name__ == '__main__':
             try:
                 amount_of_leagues = int(amount_of_leagues)
             except:
-                print('Please prove a whole number')
+                print('Please provide a whole number')
                 continue
             break
         try:
@@ -65,7 +66,7 @@ if __name__ == '__main__':
             try:
                 league = int(league)
             except:
-                print('Please prove a whole number')
+                print('Please provide a whole number')
                 continue
             break
         try:
